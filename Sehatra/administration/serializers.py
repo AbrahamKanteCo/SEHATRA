@@ -93,7 +93,7 @@ class ActionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AssociationMobileSerializer(serializers.ModelSerializer):
-    actions = ActionSerializer(many=True, read_only=True, source='&')
+    actions = ActionSerializer(many=True, read_only=True, source='association_action')
     videos = VideoSerializer(many=True, read_only=True, source='association_action__action_video')
 
     class Meta:

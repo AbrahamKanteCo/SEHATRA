@@ -91,7 +91,6 @@ def getAssociation(request):
     try:
         associations = Association.objects.filter(en_ligne=True).prefetch_related('association_action__action_video').prefetch_related('association_action')
         serializer = AssociationMobileSerializer(associations,many=True,context={'request': request}) 
-        print(serializer.data)
     except Video.DoesNotExist:
         return Response({'message': 'Aucune association trouvée.'}, status=404)
 
