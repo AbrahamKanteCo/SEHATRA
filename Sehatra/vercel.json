@@ -1,0 +1,9 @@
+{
+    "builds": [
+      { "src": "Sehatra/wsgi.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "Sehatra/wsgi.py" }
+    ]
+}
+  
