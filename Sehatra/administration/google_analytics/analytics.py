@@ -9,7 +9,6 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from google.analytics.data_v1beta.types import OrderBy
 from google.oauth2.service_account import Credentials
 from google.auth import exceptions
-from django.conf import settings
 
 
 from ..models import PageAnalytics, VenteParPays
@@ -121,7 +120,8 @@ country_mapping = {
 
 def authentification():
     global AUTH
-    auth = settings.AUTH_GOOGLE
+    with open('administration/google_analytics/auth.json', 'r') as file:
+        auth = json.load(file)  
     AUTH=auth
 
 AUTH=authentification()
@@ -130,7 +130,7 @@ AUTH=authentification()
 
 def get_credentials():
     authentification()
-    return Credentials.from_service_account_file(settings.GOOGLE_CREDENTIALS, scopes=SCOPES)
+    return Credentials.from_service_account_file('administration/google_analytics/kante-co-21cbf02c979a.json', scopes=SCOPES)
 
 
 
