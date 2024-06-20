@@ -19,6 +19,7 @@ from firebase_admin import credentials
 import firebase_admin
 from decouple import config
 from django.conf import settings
+import dj_database_url
 
 # Load environment variables from .env file
 # Firebase credentials
@@ -155,7 +156,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'concert.middleware.OneSessionPerUserMiddleware',
-    'django_user_agents.middleware.UserAgentMiddleware'
+    'django_user_agents.middleware.UserAgentMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 
@@ -187,8 +190,12 @@ ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sehatra',
+        'USER': 'postgres',
+        'PASSWORD': 'empamandala',
+        'HOST': 'localhost',  # ou l'adresse IP de votre serveur PostgreSQL
+        'PORT': '5432',       # port par défaut de PostgreSQL
     }
 }
 
@@ -239,12 +246,20 @@ HTML_MINIFY = False
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# STATIC_ROOT = 'C:\\Users\\TOLOTRA-MALAGASY\\PycharmProjects\\Sehatra\\static'
+# This setting informs Django of the URI path from which your static files will be served to users
+# Here, they well be accessible at your-domain.onrender.com/static/... or yourcustomdomain.com/static/...
+# URL pour accéder aux fichiers statiques
 STATIC_URL = '/static/'
-# STATIC_ROOT = STATIC_DIR
-STATICFILES_DIRS = [STATIC_DIR]
+
+# Répertoires où Django cherchera les fichiers statiques
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Répertoire où collectstatic rassemblera les fichiers statiques
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'PNG': ".png"}
 

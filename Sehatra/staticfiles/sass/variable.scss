@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans&display=swap');
+
+$font-primary : 'Open Sans', sans-serif;
+$font-secondary : 'Merriweather', serif;
+$font-tertiary : '', sans-serif;
+$font-heading : $font-secondary;
+$font-icon: FontAwesome;
+$font-sas: 'sas-webfont';
+
+
+$black: #222;
+$white: #ffffff;
+
+// Global
+$color-body: #666666;
+$color-primary: darkblue;
+$color-secondary: #000000;
+$color-tertiary: transparent;
+$color-quaternary: transparent;
+$body-bg: #fff;
+$font-body: $font-primary;
+$content-padding: 100px;
+
+/* -------------------- 
+TOPBAR SETTING
+-----------------------*/
+$topbar-bg: $color-secondary;
+$topbar-color: $white;
+$topbar-nav-color: $white;
+$topbar-nav-hover-color: $color-primary;
+$topbar-font: $font-primary;
+
+/* -------------------- 
+NAVBAR SETTING
+-----------------------*/
+$navbar-bg: $black;
+$navbar-font: $font-secondary;
+$navbar-color: $white;
+$navbar-hover-color: $color-primary;
+$navbar-active-color: $color-primary;
+$navbar-bg-stiky: $black;
+$navbar-stiky-color: $white;
+$navbar-stiky-active-color: $color-primary;
+
+/* -------------------- 
+FOOTER SETTING
+-----------------------*/
+$footer-bg: #222222;
+$footer-bg-copyright: lighten($color-secondary, 5%);
+$footer-font-color: $white;
+
+/* -------------------- 
+BUTTON SETTING
+-----------------------*/
+$btn-primary-hover: $color-secondary;
+
+
+// Background
+$bg__topbar: $color-primary;
+
+.bolder{
+	font-weight: 600;
+}
+
+.cfix{
+	content: '';
+	display: block;
+	width: 100%;
+	clear: both;
+}
+
+@import "mixin.scss";
